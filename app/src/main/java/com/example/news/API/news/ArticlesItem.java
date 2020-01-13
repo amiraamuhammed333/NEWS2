@@ -1,5 +1,6 @@
-package com.example.news.API;
+package com.example.news.API.news;
 
+import com.example.news.API.news.SourcesItem;
 import com.google.gson.annotations.SerializedName;
 
 public class ArticlesItem{

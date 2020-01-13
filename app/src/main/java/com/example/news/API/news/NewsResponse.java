@@ -1,6 +1,7 @@
-package com.example.news.API;
+package com.example.news.API.news;
 
 import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 
 public class NewsResponse{

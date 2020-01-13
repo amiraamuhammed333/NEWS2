@@ -7,20 +7,13 @@ public class APIManger {
 
     private static Retrofit retrofit;
 
-    //c26a5b7fce024a58b55d2bbee6b5b836
-
     public static Retrofit getInstance(){
         if (retrofit==null){
             retrofit= new Retrofit.Builder()
                     .baseUrl("https://newsapi.org/v2/")
                     .addConverterFactory ( GsonConverterFactory.create () )
-                    .build();
+                    .build(); }
+        return retrofit; }
 
-        }
-        return retrofit;
-    }
-
-    public static WebService getApis(){
-       return getInstance ().create ( WebService.class );
-    }
+    public static WebService getApis(){ return getInstance ().create ( WebService.class ); }
 }

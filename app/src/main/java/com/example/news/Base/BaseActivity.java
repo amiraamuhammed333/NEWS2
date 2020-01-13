@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.news.R;
 
 public class BaseActivity extends AppCompatActivity {
-
     public AppCompatActivity activity;
     AlertDialog alertDialog;
 
@@ -17,50 +16,27 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
-        activity=this;
-    }
-    public AlertDialog showConfirmationDialog(int title,int message,int posText
-            ,AlertDialog.OnCancelListener posAction,boolean isCancelable){
-         alertDialog = new AlertDialog .Builder(activity)
-                .setTitle ( title )
-                .setMessage ( message )
-                .setPositiveButton ( posText, (DialogInterface.OnClickListener) posAction )
-                 .setCancelable ( isCancelable )
-                 .show ();
-         return alertDialog;
+        activity=this; }
 
+    public AlertDialog showConfirmationDialog(int title,int message,int posText,AlertDialog.OnCancelListener posAction,boolean isCancelable)
+       {alertDialog = new AlertDialog .Builder(activity).setTitle ( title ).setMessage ( message )
+                      .setPositiveButton ( posText, (DialogInterface.OnClickListener) posAction )
+                      .setCancelable ( isCancelable ).show ();
+        return alertDialog;}
 
-    }
-
-
-
-    public AlertDialog showMessage(int title,int message,int posText
-            ){
-        alertDialog = new AlertDialog .Builder(activity)
-                .setTitle ( title )
-                .setMessage ( message )
+    public AlertDialog showMessage(int title,int message,int posText)
+       { alertDialog = new AlertDialog .Builder(activity).setTitle ( title ).setMessage ( message )
                 .setPositiveButton ( posText, new DialogInterface.OnClickListener () {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss ();
-                    }
-                } )
-                .show ();
-        return alertDialog;
-
-
-    }
+                    public void onClick(DialogInterface dialog, int which) { dialog.dismiss (); }} ).show ();
+        return alertDialog; }
 
 
 
-    public AlertDialog showConfirmationDialog(String title,String message,String posText
-            ,AlertDialog.OnCancelListener posAction,boolean isCancelable){
-        alertDialog = new AlertDialog .Builder(activity)
-                .setTitle ( title )
-                .setMessage ( message )
+    public AlertDialog showConfirmationDialog(String title,String message,String posText,AlertDialog.OnCancelListener posAction,boolean isCancelable){
+        alertDialog = new AlertDialog .Builder(activity).setTitle ( title ).setMessage ( message )
                 .setPositiveButton ( posText, (DialogInterface.OnClickListener) posAction )
-                .setCancelable ( isCancelable )
-                .show ();
+                .setCancelable ( isCancelable ).show ();
         return alertDialog;
 
 
