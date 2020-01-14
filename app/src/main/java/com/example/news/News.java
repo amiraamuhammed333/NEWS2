@@ -37,7 +37,6 @@ public class News extends BaseActivity {
     }
 
     private void loadNewsSources() {
-
         showProgreesBar ( R.string.loading );
         APIManger.getApis ()
                 .getNewaSources ( Constants.API_KEY, Constants.LANGuAGE )
@@ -52,20 +51,6 @@ public class News extends BaseActivity {
                         showMessage ( getString ( R.string.error )
                                 ,t.getLocalizedMessage (),getString(R.string.oak) );
                     }} ); }
-
-
-    private void loadNewsSourcesById(String sourceId){
-        showProgreesBar ( R.string.loading );
-        APIManger.getApis ().getNews ( Constants.API_KEY, Constants.LANGuAGE,sourceId+"" )
-                .enqueue ( new Callback<NewsResponse> () {
-                    @Override
-                    public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
-                        hideProgressDialog ();
-                        articles=response.body ().getArticles ();
-                         newsAdapter.changeData ( articles ); }
-                    @Override
-                    public void onFailure(Call<NewsResponse> call, Throwable t) { }} ); }
-
 
     private void setTabLayoutWithNewsSources(final List<SourcesItem> sources) {
         for (int i=0;i<sources.size ();i++){
@@ -82,6 +67,22 @@ public class News extends BaseActivity {
             public void onTabUnselected(TabLayout.Tab tab) { }
             @Override
             public void onTabReselected(TabLayout.Tab tab) { }} ); }
+
+
+
+    private void loadNewsSourcesById(String sourceId){
+        showProgreesBar ( R.string.loading );
+        APIManger.getApis ().getNews ( Constants.API_KEY, Constants.LANGuAGE,sourceId+"" )
+                .enqueue ( new Callback<NewsResponse> () {
+                    @Override
+                    public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
+                        hideProgressDialog ();
+                        articles=response.body ().getArticles ();
+                         newsAdapter.changeData ( articles ); }
+                    @Override
+                    public void onFailure(Call<NewsResponse> call, Throwable t) { }} ); }
+
+
 
 
 
